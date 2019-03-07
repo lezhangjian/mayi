@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .header-all{
+                width: 100%;
+                background: #2D2D2D none repeat scroll 0% 0%;
+                position: fixed;
+                z-index: 900;
+                top: 0px;
+                left: 0px;
+        }
+        .top-clear{
+            height: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        .top-nav{
+                display: inline-block;
+                float: left;
+        }
+        .now{
+                color: #d8d8d8;
+                display: block;
+                padding: 0 10px;
+        }
+        li{
+            list-style: none;
+            float: left;
+        }
+        .search {
+            margin-left: 70px;
+            display: inline-block;
+            height: 30px;
+            margin-top: 8px;
+            float: left;
+            border: 1px solid #4E4E4E;
+            border-radius: 2px;
+        }
+        .search .input {
+            float: left;
+            border: 0;
+            line-height: 30px;
+            height: 30px;
+            width: 200px;
+            padding: 0 5px;
+            background: #272822;
+            color: #ccc;
+    }
+        .search .imgbt {
+            float: left;
+            border: 0;
+            line-height: 28px;
+            height: 28px;
+            width: 40px;
+            background: #272822 ;
+            cursor: pointer;
+            color: #bbbbbb;
+    }
+
+
+    </style>
+</head>
+<body>
+<div class="header-all">
+    <div class="top-clear">
+        <ul class="top-nav">
+            <li>
+                <a class="now">首页</a>
+            </li>
+            <li>
+                <a class="now">电影</a>
+            </li>
+            <li>
+                <a class="now">电视剧</a>
+            </li>
+            <li>
+                <a class="now">动漫</a>
+            </li>
+
+        </ul>
+        <ul class="search">
+            <form name="formsearch" id="formsearch" action="http://192.168.31.132:8000/mayi/" method="post" target="_self" autocomplete="off">
+                <input class="input" name="searchword" type="text" id="keyword" placeholder="请输入影片或演员名">
+                <input class="imgbt" type="submit" value="搜索">
+                {% csrf_token %}
+            </form>
+        </ul>
+    </div>
+</div>
+<br><br><br>
+
+<div>
+    <div>
+        <span style="color: #333;font-size: 28px">推荐影视</span><br>
+        <div style="height: 1px;width: 100%;background: #777777"></div>
+        <ul style="padding-left: 0px;float:left; width:auto;">
+            {% for title, url in recommend1.items %}
+                <a href="{{url.1}}">
+                    <li><span><img style="width: 140px;height: 200px;margin-right: 20px" src="{{url.0}}"></span><br>
+                        <span style="padding-left: 35px;width: 140px;overflow: hidden">{{title}}<span/>
+                    </li>
+                </a>
+            {% endfor %}
+            <br>
+            {% for title, url in recommend2.items %}
+                <a href="{{url.1}}">
+                    <li><span><img style="width: 140px;height: 200px;margin-right: 20px" src="{{url.0}}"></span><br>
+                        <span style="padding-left: 35px;width: 100px;overflow: hidden;display: block">{{title}}<span/>
+                    </li>
+                </a>
+            {% endfor %}
+        </ul><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <span style="color: #333;font-size: 28px">电影</span><br>
+        <div style="height: 1px;width: 100%;background: #777777"></div>
+        <ul style="padding-left: 0px;float:left; width:auto;">
+            {% for title, url in film.items %}
+                <a href="{{url.1}}">
+                    <li><span><img style="width: 140px;height: 200px;margin-right: 20px" src="{{url.0}}"></span><br>
+                        <span style="padding-left: 35px;width: 100px;overflow: hidden;display: block">{{title}}<span/>
+                    </li>
+                </a>
+            {% endfor %}
+        </ul><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+        <span style="color: #333;font-size: 28px">电视剧</span><br>
+        <div style="height: 1px;width: 100%;background: #777777"></div>
+        <ul style="padding-left: 0px;float:left; width:auto;">
+            {% for title, url in TV.items %}
+                <a href="{{url.1}}">
+                    <li><span><img style="width: 140px;height: 200px;margin-right: 20px" src="{{url.0}}"></span><br>
+                        <span style="padding-left: 35px;width: 100px;overflow: hidden;display: block">{{title}}<span/>
+                    </li>
+                </a>
+            {% endfor %}
+        </ul><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+        <span style="color: #333;font-size: 28px">动漫</span><br>
+        <div style="height: 1px;width: 100%;background: #777777"></div>
+        <ul style="padding-left: 0px;float:left; width:auto;">
+            {% for title, url in comic.items %}
+                <a href="{{url.1}}">
+                    <li><span><img style="width: 140px;height: 200px;margin-right: 20px" src="{{url.0}}"></span><br>
+                        <span style="padding-left: 35px;width: 100px;overflow: hidden;display: block">{{title}}<span/>
+                    </li>
+                </a>
+            {% endfor %}
+        </ul><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>

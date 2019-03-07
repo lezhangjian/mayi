@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            display: inline-block;
+        }
+        img{
+            width: 300px;
+            height: 400px;
+            box-shadow: 5px 6px 0px 0px rgba(0, 0, 0, 0.36);
+        }
+        .film_name{
+            font-size: 20px;
+            font-weight: 800;
+            color: #333;
+        }
+        dt{
+            width: 630px;
+            height: 30px;
+            font-family: "hzguangbiao":
+        }
+        li{
+            float: left;
+            text-align: center;
+            list-style: none;
+
+        }
+        div ul li a{
+                display: block;
+                background: #f0f0f0;
+                border: 1px solid #d9d9d7;
+                width: 111px;
+                height: 36px;
+                text-align: center;
+                line-height: 36px;
+                text-decoration:none;
+        }
+        div ul li:hover a{
+            background: #dfdfdf;;
+            border: 1px solid #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src={{img_url}}>
+    </div>
+    <div style="position: absolute; padding: 5px;margin: 5px">
+        <dt>
+            <span class="film_name">{{film_name}}</span><br/>
+        </dt>
+        <dt>
+            <span><span style="color: #777;">主演: </span> {{actor_name}}</span>
+        </dt>
+        <dt>
+            <span><span style="color: #777;">类型: </span> {{type}}</span>
+        </dt>
+        <dt>
+
+            <span style="width: 50%; float: left;"><span style="color: #777;">导演: </span>  内详</span>
+            <span style="width: 50%; float: left;"><span style="color: #777;">地区: </span> {{position}} </span>
+        </dt>
+        <dt>
+
+            <span style="width: 50%; float: left;"><span style="color: #777;">年份: </span> {{year}}</span>
+            <span style="width: 50%; float: left;"><span style="color: #777;">语言: </span> {{language}}</span>
+        </dt>
+
+        <dt>
+            <span style="color: #777;">介绍: <span> {{context}}</span></span>
+        </dt>
+    </div>
+    <br><br>
+    <div style="display: inline;font-size: 20px;font-weight: 800;color: #333;">
+        播放列表
+    </div>
+    <br>
+    <div style="width: 100%;height: 1px;background: #777777;border: sienna"></div>
+    <br>
+
+    <div style="display: inline;">
+        <ul>
+            {% for title, url in title_url.items %}
+                <li><a href={{url}} style="color: black" target="_blank"> {{title}} </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+</body>
+</html>
